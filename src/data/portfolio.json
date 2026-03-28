@@ -1,0 +1,109 @@
+{
+  "hero": {
+    "headline": "Quality Assurance Engineer",
+    "subtext": "I hunt bugs, automate workflows, and validate APIs to deliver flawless digital experiences.",
+    "ctaButton": "See What I've Built"
+  },
+  "about": {
+    "philosophy": "Quality is not just a phase. It is a continuous practice woven into design, development, and deployment.",
+    "introduction": "Passionate QA engineer with 5+ years of experience in software testing and quality assurance. I believe in proactive testing strategies that prevent defects rather than just finding them. My approach combines meticulous attention to detail with efficient automation to ensure reliable, high-quality software delivery.",
+    "experience": "5+ years",
+    "focus": "Python, Selenium, API testing, CI/CD integration",
+    "metrics": [
+      { "label": "Projects Delivered", "value": "20+" },
+      { "label": "Cases Automated", "value": "2,000+" },
+      { "label": "Release Velocity", "value": "80% faster" }
+    ],
+    "keyStrengths": [
+      "Analytical thinking and problem-solving",
+      "Test automation and framework development",
+      "API testing and validation",
+      "Performance testing and optimization",
+      "Cross-functional collaboration",
+      "Continuous learning and adaptation"
+    ]
+  },
+  "skills": {
+    "testingTypes": [
+      "Manual Testing",
+      "Automated Testing",
+      "API Testing",
+      "Performance Testing",
+      "Security Testing",
+      "Regression Testing"
+    ],
+    "automationTools": [
+      "Selenium WebDriver",
+      "Cypress",
+      "Playwright",
+      "TestNG",
+      "JUnit"
+    ],
+    "programmingLanguages": [
+      "Python",
+      "Java",
+      "JavaScript",
+      "SQL"
+    ],
+    "otherTools": [
+      "JIRA",
+      "Postman",
+      "Git",
+      "Jenkins",
+      "TestRail",
+      "Docker",
+      "Kubernetes"
+    ]
+  },
+  "projects": [
+    {
+      "title": "E-commerce Test Automation Framework",
+      "description": "Built a maintainable automation framework for a global e-commerce platform with data-driven suites, reusable components, and Jenkins-based CI.",
+      "role": "Lead QA Engineer – framework author, integration owner, performance tuning",
+      "impact": "Cut regression cycle from 12h to 3h; reduced production incidents by 45%.",
+      "technologies": ["Python", "Selenium", "pytest", "Jenkins", "Allure Reports"],
+      "githubUrl": "https://github.com/username/ecommerce-automation",
+      "category": "Automation"
+    },
+    {
+      "title": "API Testing Suite",
+      "description": "Engineered API contract and regression suite for REST and GraphQL endpoints with automated schema validation and performance baselining.",
+      "role": "API test architect, CI pipeline manager",
+      "impact": "Improved API stability by 52% and reduced manual testing effort by 70%.",
+      "technologies": ["Python", "requests", "pytest", "Swagger", "Newman"],
+      "githubUrl": "https://github.com/username/api-testing-suite",
+      "category": "API"
+    },
+    {
+      "title": "Performance Testing Dashboard",
+      "description": "Created real-time load test reporting dashboards using JMeter, Grafana, and InfluxDB for rapid performance regression detection.",
+      "role": "Performance test lead",
+      "impact": "Detected and resolved top 3 latency bottlenecks, improving 95th percentile response in production by 32%.",
+      "technologies": ["JMeter", "Grafana", "InfluxDB", "Docker", "GitLab CI"],
+      "githubUrl": "https://github.com/username/performance-dashboard",
+      "category": "Performance"
+    },
+    {
+      "title": "Mobile App Testing Framework",
+      "description": "Built a cross-platform Appium framework for iOS/Android with visual validation and network stubbing for agile releases.",
+      "role": "Mobile QA engineer",
+      "impact": "Increased cross-device coverage by 85% and reduced mobile release regressions by 55%.",
+      "technologies": ["Appium", "Java", "TestNG", "BrowserStack", "Allure"],
+      "githubUrl": "https://github.com/username/mobile-testing-framework",
+      "category": "Automation"
+    }
+  ],
+  "contact": {
+    "email": "swarup.qa@example.com",
+    "phone": "+1 (555) 123-4567",
+    "socialLinks": {
+      "github": "https://github.com/swarup-qa",
+      "linkedin": "https://linkedin.com/in/swarup-qa",
+      "twitter": "https://twitter.com/swarup_qa"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 Swarup QA. All rights reserved.",
+    "lastUpdated": "Last updated: March 2024"
+  }
+}
