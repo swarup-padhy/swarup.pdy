@@ -24,6 +24,11 @@ export function CaseStudyDetail() {
 
   const content = project.detailContent
 
+  // If a user manually types a URL for a project that doesn't have a case study
+  if (!content) {
+    return <Navigate to="/" replace />
+  }
+
   return (
     <>
       <SEO 
