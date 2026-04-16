@@ -1,0 +1,15 @@
+{
+  "visible": true,
+  "tagline": "About me",
+  "headline": "Quality is not an act, it's a habit.",
+  "paragraphs": [
+    "Fresh MCA graduate (2025) with real internship experience at Doveriye, where I was the sole technical contributor on a Python-based AI Call RAG System — and simultaneously responsible for manual test execution and bug documentation on the same product. Alongside the internship, I've built a portfolio of QA projects covering automation, manual testing, API validation, and accessibility auditing.",
+    "My approach is systematic and evidence-driven. I design test cases that expose real vulnerabilities — from JWT session persistence bugs to WebSocket zombie connections — build Selenium frameworks using POM architecture, and document findings clearly enough that developers can act on them without back-and-forth."
+  ],
+  "highlights": [
+    { "label": "Domain", "value": "Web Apps · REST APIs · AI Systems" },
+    { "label": "Role", "value": "Junior QA Engineer" },
+    { "label": "Location", "value": "Hyderabad, India" },
+    { "label": "Availability", "value": "Open to opportunities" }
+  ]
+}

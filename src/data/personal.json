@@ -1,0 +1,12 @@
+{
+  "name": "Swarup",
+  "occupation": "QA Engineer",
+  "location": "Hyderabad, India",
+  "resumeLink": "/Swarup_Padhy_QA_Resume.pdf",
+  "bio": "I'm a Junior QA Engineer and fresh MCA graduate (2025) with real internship experience at Doveriye, where I was the sole technical contributor building a Python-based AI Call RAG System — and also responsible for writing manual test cases and documenting production bugs on the same product. My portfolio covers Selenium + Pytest automation, systematic manual QA on a MERN stack app (29 test cases, 4 critical bugs including a JWT session vulnerability), REST API testing, and WCAG 2.1 accessibility auditing — all designed to show how I approach quality in real-world engineering contexts.",
+  "socials": {
+    "linkedin": "https://www.linkedin.com/in/swarup-padhy",
+    "github": "https://github.com/swarup-padhy",
+    "email": "mailto:swarup.pdy@gmail.com"
+  }
+}

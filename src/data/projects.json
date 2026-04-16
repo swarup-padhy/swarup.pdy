@@ -1,0 +1,225 @@
+{
+  "visible": true,
+  "headline": "Case Studies",
+  "description": "A curated selection of real QA engineering engagements. Each project demonstrates a specific discipline — automation, manual testing, API validation, accessibility, or AI system QA.",
+  "projects": [
+    {
+      "id": "1",
+      "slug": "saucedemo-selenium-automation",
+      "title": "SauceDemo E2E Selenium Automation Suite",
+      "category": "Automation Testing",
+      "duration": "6 weeks",
+      "summary": "Designed and implemented a production-ready Selenium + Pytest automation framework for SauceDemo using Page Object Model architecture, explicit waits, Allure reporting, and GitHub Actions CI/CD.",
+      "whatCovered": [
+        "Built Selenium + Pytest framework from scratch using Page Object Model",
+        "Created a BasePage class to centralize explicit waits and eliminate flakiness",
+        "Structured six dedicated page objects for clean test-layer separation",
+        "Integrated Allure reporting and GitHub Actions for automated CI execution"
+      ],
+      "impact": [
+        "Eliminated 100% of implicit wait usage — zero flaky tests in CI pipeline",
+        "Structured coverage across login, cart, checkout, and product sorting flows",
+        "Regression suite runs end-to-end automatically on every push via GitHub Actions",
+        "POM architecture makes adding new tests fast with minimal boilerplate"
+      ],
+      "techStack": ["Python", "Selenium", "Pytest", "Allure", "GitHub Actions", "POM"],
+      "githubUrl": "https://github.com/swarup/saucedemo-v2",
+      "detailContent": {
+        "overview": "SauceDemo is a publicly available e-commerce demo app. I used it as a real automation target to build a production-grade framework from scratch — the same way you would inside a QA team. The goal was to demonstrate POM architecture, explicit wait strategy, CI integration, and Allure reporting as a unified, working system.",
+        "stepsFollowed": [
+          "Analyzed SauceDemo's page structure and identified six core page objects.",
+          "Built a BasePage class to centralize WebDriverWait logic and reusable element interactions.",
+          "Wrote modular Pytest test cases for login, product sorting, cart, and checkout flows.",
+          "Configured a GitHub Actions workflow to trigger the full suite on every commit push."
+        ],
+        "challengesFaced": [
+          {
+            "challenge": "Timing-related flakiness on dynamic UI elements during test runs.",
+            "solution": "Centralized all waits inside BasePage using explicit WebDriverWait with expected conditions — removed all implicit waits from the entire codebase."
+          },
+          {
+            "challenge": "Allure reports not rendering correctly in the GitHub Actions CI environment.",
+            "solution": "Configured the Allure CLI path explicitly in the workflow YAML and added artifact upload steps so reports are accessible after each run."
+          }
+        ],
+        "resultsAndMetrics": [
+          "Full suite runs in under 3 minutes covering all core e-commerce user flows.",
+          "Allure reports generate with step-level traceability after every CI execution.",
+          "Zero test failures due to timing issues after the BasePage explicit wait refactor."
+        ]
+      }
+    },
+    {
+      "id": "2",
+      "slug": "mern-chat-app-manual-qa",
+      "title": "MERN Chat Application — Full Manual QA Engagement",
+      "category": "Manual Testing",
+      "duration": "3 weeks",
+      "summary": "End-to-end manual QA engagement on a MERN stack chat application — designing 29 test cases, executing them systematically, and reporting 4 real defects including a JWT session persistence vulnerability and a WebSocket zombie connection bug.",
+      "whatCovered": [
+        "Designed 29 structured test cases covering auth, messaging, and real-time chat behavior",
+        "Built a Requirements Traceability Matrix (RTM) linking every test case to a requirement",
+        "Executed exploratory testing to uncover edge cases beyond written test cases",
+        "Reported 4 critical and high-severity defects with full reproduction steps"
+      ],
+      "impact": [
+        "Discovered a JWT session persistence vulnerability — session remained active post-logout",
+        "Identified a WebSocket zombie connection causing silent message delivery failures",
+        "Achieved 100% requirement coverage across all tested modules via RTM",
+        "Delivered a complete artifact suite: test plan, test cases, RTM, bug reports, and summary"
+      ],
+      "techStack": ["Manual Testing", "JIRA", "RTM", "Exploratory Testing", "WebSocket", "JWT"],
+      "detailContent": {
+        "overview": "A MERN stack real-time chat application used as a QA practice target. I conducted a full manual QA engagement — from test planning to defect reporting — treating it exactly as a real-world assignment with professional-grade deliverables a hiring team could evaluate directly.",
+        "stepsFollowed": [
+          "Reviewed the application's feature set and created a structured test plan.",
+          "Designed 29 test cases with preconditions, test data, execution steps, and expected results.",
+          "Built a Requirements Traceability Matrix to confirm full coverage before execution.",
+          "Executed all test cases and ran exploratory sessions to probe edge-case behavior."
+        ],
+        "challengesFaced": [
+          {
+            "challenge": "WebSocket behavior is invisible through the UI alone — hard to observe or assert.",
+            "solution": "Used browser DevTools Network tab to monitor WebSocket frames directly, which revealed a zombie connection persisting after the chat session ended."
+          },
+          {
+            "challenge": "The JWT session bug required precise logout timing to reproduce consistently.",
+            "solution": "Documented exact reproduction steps with action sequence and timing so developers could reproduce it reliably without back-and-forth."
+          }
+        ],
+        "resultsAndMetrics": [
+          "4 defects reported — 2 critical severity (security), 1 high, 1 medium — all fully reproducible.",
+          "JWT session vulnerability and WebSocket zombie connection both confirmed by developer review.",
+          "Complete professional artifact suite that mirrors real QA team output delivered."
+        ]
+      }
+    },
+    {
+      "id": "3",
+      "slug": "restful-booker-api-testing",
+      "title": "Restful-Booker REST API Test Suite",
+      "category": "API Testing",
+      "duration": "2 weeks",
+      "summary": "Designed and executed a structured REST API testing suite for the Restful-Booker public API using Python Requests and Pytest — covering full CRUD operations, authentication flows, and schema validation.",
+      "whatCovered": [
+        "Scaffolded a clean project structure with base URL config and reusable request helpers",
+        "Wrote CRUD test cases covering Create, Read, Update, and Delete booking endpoints",
+        "Validated response status codes, JSON schema structure, and field-level data integrity",
+        "Tested token-based authentication and authorization behavior on protected endpoints"
+      ],
+      "impact": [
+        "Full CRUD coverage across all primary Restful-Booker API endpoints",
+        "Reusable conftest.py fixture handles auth token generation automatically across tests",
+        "Schema assertions catch silent API contract breaks without manual inspection",
+        "Modular test structure allows new endpoint tests to be added with minimal setup"
+      ],
+      "techStack": ["Python", "Pytest", "Requests", "Postman", "REST API Testing"],
+      "detailContent": {
+        "overview": "Restful-Booker is a publicly available REST API built for QA practice. I used it to build a structured Python-based API test suite from scratch — simulating the kind of setup a QA engineer would build for a real backend service, with proper project scaffolding, reusable helpers, and schema-level assertions.",
+        "stepsFollowed": [
+          "Explored all endpoints using Postman to understand schemas, request formats, and auth flows.",
+          "Scaffolded the project with a base config module for host URL and auth token management.",
+          "Wrote Pytest test cases for each CRUD operation with explicit status code and schema assertions.",
+          "Created a conftest.py fixture for token generation to eliminate repeated auth setup per test."
+        ],
+        "challengesFaced": [
+          {
+            "challenge": "Managing authentication tokens across multiple tests without duplicating setup code.",
+            "solution": "Created a session-scoped Pytest fixture in conftest.py that generates a fresh auth token once and injects it into any test that requires authorization."
+          }
+        ],
+        "resultsAndMetrics": [
+          "Full CRUD coverage for the booking resource with status code and schema validation per endpoint.",
+          "Auth fixture eliminates manual token setup — any new test requiring auth needs zero extra code.",
+          "Project structure mirrors a real-world API test framework, reviewable end-to-end on GitHub."
+        ]
+      }
+    },
+    {
+      "id": "4",
+      "slug": "wikipedia-wcag-accessibility-audit",
+      "title": "Wikipedia WCAG 2.1 Accessibility Audit",
+      "category": "Accessibility Testing",
+      "duration": "2 weeks",
+      "summary": "Conducted a structured manual accessibility audit of Wikipedia's core pages against WCAG 2.1 Level A and AA success criteria — evaluating keyboard navigation, color contrast, ARIA usage, and focus management.",
+      "whatCovered": [
+        "Audited against WCAG 2.1 Level A and AA success criteria across core page types",
+        "Tested keyboard-only navigation and focus order across search, article, and edit flows",
+        "Evaluated color contrast ratios and heading hierarchy using accessibility tools",
+        "Reviewed ARIA landmark usage, alt text completeness, and screen reader compatibility"
+      ],
+      "impact": [
+        "Documented accessibility gaps across search, article, and edit page user flows",
+        "Identified focus management issues directly affecting keyboard-only users",
+        "Produced a structured audit report with WCAG criterion reference and severity per finding",
+        "Directly applicable experience for QA roles in healthcare, government, and public-sector projects"
+      ],
+      "techStack": ["WCAG 2.1", "Browser DevTools", "Lighthouse", "Axe", "Manual Testing"],
+      "detailContent": {
+        "overview": "Wikipedia is one of the most visited websites in the world, making accessibility critical for millions of users — including those relying on screen readers, keyboard navigation, or assistive technology. I conducted a structured WCAG 2.1 audit across key page types, treating it as a real-world accessibility QA engagement with a formal deliverable.",
+        "stepsFollowed": [
+          "Identified key page types for audit scope: homepage, search results, article view, and edit page.",
+          "Mapped relevant WCAG 2.1 Level A and AA success criteria to each page type.",
+          "Tested using keyboard-only navigation, evaluating tab order and focus indicator visibility.",
+          "Used Lighthouse and browser DevTools to verify contrast ratios and ARIA landmark structure."
+        ],
+        "challengesFaced": [
+          {
+            "challenge": "WCAG criteria can be ambiguous — pass/fail is not always immediately clear.",
+            "solution": "Cross-referenced the official WCAG Understanding documents and Deque's accessibility guidelines for each finding to ensure each verdict was objectively defensible."
+          }
+        ],
+        "resultsAndMetrics": [
+          "Structured audit report produced with WCAG criterion ID, severity, and affected element per finding.",
+          "Hands-on experience applying WCAG 2.1 evaluation methodology to a real production website.",
+          "Directly applicable to QA roles in healthcare, government, and compliance-sensitive projects."
+        ]
+      }
+    },
+    {
+      "id": "5",
+      "slug": "doveriye-call-rag-system",
+      "title": "Call RAG System — AI Script Generation (Doveriye Internship)",
+      "category": "Internship Project",
+      "duration": "4 months",
+      "summary": "Sole technical contributor at Doveriye (Aug–Nov 2025) — built a Python-based AI Call RAG System using vector databases and a local LLM for automated script generation, while simultaneously executing manual test cases and documenting real bugs found in the system.",
+      "whatCovered": [
+        "Built an AI-powered call script generation app using Python, vector DB, and a local LLM",
+        "Designed and executed manual test cases covering the full RAG pipeline end-to-end",
+        "Documented real bugs found during internal QA with reproduction steps and severity",
+        "Managed full development and QA responsibilities as the sole technical contributor"
+      ],
+      "impact": [
+        "Delivered a functional RAG system from zero to working product within 4 months",
+        "Real production bugs identified and documented before system reached end users",
+        "Built practical Python proficiency from scratch through a live production project",
+        "Bridged developer and QA roles within a single real-world product engagement"
+      ],
+      "techStack": ["Python", "Vector Database", "Local LLM", "RAG Architecture", "Manual Testing"],
+      "detailContent": {
+        "overview": "At Doveriye, I was the sole technical contributor responsible for building a Call RAG System — an AI application that generates call scripts by retrieving relevant context from a vector database and feeding it to a local LLM. Alongside development, I also wore the QA hat: designing manual test cases for the pipeline and documenting real bugs found during internal testing.",
+        "stepsFollowed": [
+          "Designed the RAG pipeline architecture — vector document ingestion, retrieval query logic, and LLM prompt flow.",
+          "Implemented the system end-to-end using Python with a vector database for context storage and retrieval.",
+          "Wrote manual test cases to validate retrieval accuracy, LLM output structure, and edge-case inputs.",
+          "Documented each bug found during self-testing with clear reproduction steps and expected vs actual behavior."
+        ],
+        "challengesFaced": [
+          {
+            "challenge": "Building an end-to-end Python system with no prior Python experience.",
+            "solution": "Learned by building — started with the smallest working version of each component, then iterated. Used the project itself as the curriculum rather than studying in isolation."
+          },
+          {
+            "challenge": "Testing an AI system where generated output quality is inherently subjective.",
+            "solution": "Defined objective, verifiable test criteria around retrieval accuracy, response latency, and output format structure — rather than evaluating open-ended generated text subjectively."
+          }
+        ],
+        "resultsAndMetrics": [
+          "Delivered a fully functional Call RAG System within the 4-month internship window.",
+          "Real bugs identified, documented, and resolved before the system reached end users.",
+          "Internship provided foundational Python + AI system experience that directly underpins the automation portfolio."
+        ]
+      }
+    }
+  ]
+}

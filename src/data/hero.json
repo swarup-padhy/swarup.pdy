@@ -1,0 +1,11 @@
+{
+  "visible": true,
+  "headline": "Finding bugs before users do.",
+  "subtitle": "Junior QA Engineer specializing in Python-based test automation, systematic manual testing, and REST API validation — with hands-on internship experience building and testing an AI-powered system.",
+  "skillsLabel": "Proficiency in",
+  "skills": ["Python", "Selenium", "Pytest", "Postman", "Git", "JIRA", "Allure", "GitHub Actions"],
+  "ctas": {
+    "primary": { "label": "View Case Studies", "href": "#case-study" },
+    "secondary": { "label": "Let's Connect", "href": "https://linkedin.com/in/swarup" }
+  }
+}

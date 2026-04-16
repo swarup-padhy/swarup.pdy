@@ -1,0 +1,11 @@
+{
+  "visible": true,
+  "tagline": "Get in touch",
+  "headline": "Let's build quality together.",
+  "description": "Whether you're looking for someone to set up automation from scratch, improve test coverage, or just talk QA — I'm open to the conversation.",
+  "links": [
+    { "label": "Email", "value": "swarup.pdy@gmail.com", "href": "mailto:swarup.pdy@gmail.com" },
+    { "label": "LinkedIn", "value": "linkedin.com/in/swarup-padhy", "href": "https://www.linkedin.com/in/swarup-padhy" },
+    { "label": "GitHub", "value": "github.com/swarup-padhy", "href": "https://github.com/swarup-padhy" }
+  ]
+}

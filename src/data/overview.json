@@ -1,0 +1,30 @@
+{
+  "visible": true,
+  "tagline": "What I do",
+  "headline": "End-to-end quality, from strategy to execution.",
+  "description": "I specialize in Python-based test automation using Selenium and Pytest, systematic manual testing, and REST API validation — delivering structured QA coverage that integrates directly into CI/CD pipelines and gives development teams confidence to ship.",
+  "stats": [
+    { "value": "4", "label": "Months of Internship" },
+    { "value": "5+", "label": "Portfolio Projects" },
+    { "value": "29", "label": "Manual Test Cases" },
+    { "value": "4", "label": "Critical Bugs Found" }
+  ],
+  "skillGroups": [
+    {
+      "title": "Test Automation",
+      "skills": ["Selenium", "Pytest", "POM Architecture", "Allure Reports"]
+    },
+    {
+      "title": "API & Manual Testing",
+      "skills": ["Postman", "Requests", "REST API Testing", "Exploratory Testing"]
+    },
+    {
+      "title": "Languages & Version Control",
+      "skills": ["Python", "Git", "GitHub Actions"]
+    },
+    {
+      "title": "Tracking & Compliance",
+      "skills": ["JIRA", "WCAG 2.1", "GxP Compliance", "RTM"]
+    }
+  ]
+}
