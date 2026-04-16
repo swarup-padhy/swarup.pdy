@@ -126,7 +126,7 @@ export function Navbar() {
               <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
 
               <div className="px-8 py-8 border-b border-border/50 bg-muted/20">
-                <span className="text-xl font-heading font-bold tracking-tight">{personal.name}</span>
+                <span className="text-sm font-heading font-bold tracking-tight uppercase">{personal.name}</span>
                 <p className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mt-1">
                   {personal.occupation}
                 </p>
