@@ -2,7 +2,7 @@
 
 A premium, data-driven personal portfolio designed and developed to showcase QA engineering projects, documentation, and technical skills. Built with modern web standards, focusing on high-performance animations, accessible UI, and strict semantic structure.
 
-[**View Live Deployment**](https://swarup-padhy.vercel.app/) (Assuming Vercel Domain)
+[**View Live Deployment**](https://swaruppadhy.vercel.app/)
 
 ---
 
