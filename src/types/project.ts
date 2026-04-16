@@ -36,7 +36,7 @@ export interface Project {
   impact: string[];
   techStack: string[];
   githubUrl?: string;
-  detailContent: ProjectDetail;
+  detailContent?: ProjectDetail;
 }
 
 // ─── Projects Section ──────────────────────────────────────────────────────

@@ -28,9 +28,6 @@ export function Overview() {
       id="overview"
       className="section-padding bg-background relative overflow-hidden border-t border-border/40"
     >
-      {/* Subtle grid texture */}
-      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#80808006_1px,transparent_1px),linear-gradient(to_bottom,#80808006_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,#000_60%,transparent_100%)]" />
-
       <div className="container-layout relative z-10">
         <motion.div
           variants={staggerContainer}

@@ -14,6 +14,7 @@ interface ProjectCardProps {
 export function ProjectCard({ project, index }: ProjectCardProps) {
   return (
     <motion.article
+      id={`project-${project.slug}`}
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
@@ -46,20 +47,27 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           ))}
         </div>
 
-        <div className="pt-6 flex flex-wrap items-center gap-4">
-          <Button asChild size="lg" className="rounded-full px-7 font-medium">
-            <Link to={`/case-studies/${project.slug}`}>
-              Read Case Study <RiArrowRightUpLine className="ml-2 size-4" />
-            </Link>
-          </Button>
-          {project.githubUrl && (
-            <Button variant="outline" size="lg" className="rounded-full px-7 font-medium" asChild>
-              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                <RiGithubFill className="mr-2 size-5" /> View Code
-              </a>
-            </Button>
-          )}
-        </div>
+        {(project.detailContent || project.githubUrl) && (
+          <div className="pt-6 flex flex-wrap items-center gap-4">
+            {project.detailContent && (
+              <Button asChild size="lg" className="rounded-full px-7 font-medium">
+                <Link 
+                  to={`/case-studies/${project.slug}`}
+                  onClick={() => sessionStorage.setItem("lastVisitedProject", project.slug)}
+                >
+                  Read Case Study <RiArrowRightUpLine className="ml-2 size-4" />
+                </Link>
+              </Button>
+            )}
+            {project.githubUrl && (
+              <Button variant="outline" size="lg" className="rounded-full px-7 font-medium" asChild>
+                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                  <RiGithubFill className="mr-2 size-5" /> View Code
+                </a>
+              </Button>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Right side: Details Grid */}

@@ -32,7 +32,7 @@ export function Navbar() {
           onClick={(e) => smoothScrollTo(e, "#overview")}
           className="flex flex-col group cursor-pointer"
         >
-          <span className="text-xl font-heading font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 transition-all group-hover:to-primary">
+          <span className="text-xl uppercase font-heading font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 transition-all group-hover:to-primary">
             {personal.name}
           </span>
           <span className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-semibold mt-0.5">

@@ -5,9 +5,7 @@
   "description": "I specialize in Python-based test automation using Selenium and Pytest, systematic manual testing, and REST API validation — delivering structured QA coverage that integrates directly into CI/CD pipelines and gives development teams confidence to ship.",
   "stats": [
     { "value": "4", "label": "Months of Internship" },
-    { "value": "5+", "label": "Portfolio Projects" },
-    { "value": "29", "label": "Manual Test Cases" },
-    { "value": "4", "label": "Critical Bugs Found" }
+    { "value": "5+", "label": "Projects" }
   ],
   "skillGroups": [
     {
@@ -24,7 +22,7 @@
     },
     {
       "title": "Tracking & Compliance",
-      "skills": ["JIRA", "WCAG 2.1", "GxP Compliance", "RTM"]
+      "skills": ["JIRA", "WCAG 2.1", "RTM"]
     }
   ]
 }

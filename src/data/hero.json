@@ -6,6 +6,6 @@
   "skills": ["Python", "Selenium", "Pytest", "Postman", "Git", "JIRA", "Allure", "GitHub Actions"],
   "ctas": {
     "primary": { "label": "View Case Studies", "href": "#case-study" },
-    "secondary": { "label": "Let's Connect", "href": "https://linkedin.com/in/swarup" }
+    "secondary": { "label": "Let's Connect", "href": "https://www.linkedin.com/in/swarup-padhy" }
   }
 }

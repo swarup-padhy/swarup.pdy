@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { useProjects } from "@/hooks"
@@ -9,6 +9,23 @@ const ALL_CATEGORY = "All"
 export function CaseStudies() {
   const { projects, categories, categoryCounts, isVisible, headline, description } = useProjects()
   const [activeFilter, setActiveFilter] = useState<string>(ALL_CATEGORY)
+
+  // Restore scroll position when returning from Case Study Detail via Session Storage
+  useEffect(() => {
+    const lastVisited = sessionStorage.getItem("lastVisitedProject")
+    if (lastVisited) {
+      // Small timeout allows initial DOM block + framer-motion variants to shift into layout
+      const timer = setTimeout(() => {
+        const el = document.getElementById(`project-${lastVisited}`)
+        if (el) {
+          const y = el.getBoundingClientRect().top + window.scrollY - 100 // -100px offset for fixed navbar
+          window.scrollTo({ top: y, behavior: "instant" })
+        }
+        sessionStorage.removeItem("lastVisitedProject")
+      }, 150)
+      return () => clearTimeout(timer)
+    }
+  }, [])
 
   if (!isVisible) return null
   
