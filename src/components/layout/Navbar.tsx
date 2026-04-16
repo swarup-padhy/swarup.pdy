@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
-import { RiMenu3Line, RiDownloadLine } from "@remixicon/react"
+import { RiMenu3Line, RiDownloadLine, RiLoader4Line } from "@remixicon/react"
+import { toast } from "sonner"
 import { personal, navbarData as navbar } from "@/store"
 import { ModeToggle } from "@/components/theme/ModeToggle"
 import { Button } from "@/components/ui/button"
@@ -9,6 +10,40 @@ import { smoothScrollTo } from "@/lib/utils"
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [isDownloading, setIsDownloading] = useState(false)
+
+  const handleDownload = async (e: React.MouseEvent) => {
+    e.preventDefault()
+    if (isDownloading) return
+
+    setIsDownloading(true)
+    const toastId = toast.loading("Preparing your download...")
+
+    try {
+      const response = await fetch(personal.resumeLink)
+      if (!response.ok) throw new Error("Resume file not found on server")
+
+      const blob = await response.blob()
+      const url = window.URL.createObjectURL(blob)
+      const a = document.createElement("a")
+      a.href = url
+      // Use the path basename as default name
+      a.download = personal.resumeLink.split('/').pop() || "Resume.pdf"
+      document.body.appendChild(a)
+      a.click()
+      window.URL.revokeObjectURL(url)
+      document.body.removeChild(a)
+
+      toast.success("Resume downloaded successfully!", { id: toastId })
+      
+      // Strict 2-second cooldown to prevent spamming
+      setTimeout(() => setIsDownloading(false), 2000)
+    } catch (error) {
+      console.error("Download Error:", error)
+      toast.error("Failed to download the resume. Please try again later.", { id: toastId })
+      setIsDownloading(false)
+    }
+  }
 
   useEffect(() => {
     const handleScrollEvent = () => setScrolled(window.scrollY > 20)
@@ -57,11 +92,22 @@ export function Navbar() {
 
           <div className="flex items-center gap-4 border-l border-border/50 pl-8 ml-2">
             <ModeToggle />
-            <Button asChild className="rounded-full shadow-md hover:shadow-lg transition-all duration-300 font-semibold px-6">
-              <a href={personal.resumeLink} download>
-                <span>Resume</span>
-                <RiDownloadLine className="ml-2 h-4 w-4" />
-              </a>
+            <Button 
+              onClick={handleDownload}
+              disabled={isDownloading}
+              className="rounded-full shadow-md hover:shadow-lg transition-all duration-300 font-semibold px-6 min-w-[140px]"
+            >
+              {isDownloading ? (
+                <>
+                  <span>Downloading...</span>
+                  <RiLoader4Line className="ml-2 h-4 w-4 animate-spin" />
+                </>
+              ) : (
+                <>
+                  <span>Resume</span>
+                  <RiDownloadLine className="ml-2 h-4 w-4" />
+                </>
+              )}
             </Button>
           </div>
         </nav>
@@ -103,11 +149,23 @@ export function Navbar() {
               </div>
 
               <div className="px-8 py-8 border-t border-border/50 bg-background">
-                <Button asChild size="lg" className="rounded-full w-full shadow-lg hover:shadow-xl transition-all h-14 text-md">
-                  <a href={personal.resumeLink} download>
-                    <RiDownloadLine className="mr-2 h-5 w-5" />
-                    Download Resume
-                  </a>
+                <Button 
+                  size="lg" 
+                  onClick={handleDownload}
+                  disabled={isDownloading}
+                  className="rounded-full w-full shadow-lg hover:shadow-xl transition-all h-14 text-md"
+                >
+                  {isDownloading ? (
+                    <>
+                      <RiLoader4Line className="mr-2 h-5 w-5 animate-spin" />
+                      Downloading...
+                    </>
+                  ) : (
+                    <>
+                      <RiDownloadLine className="mr-2 h-5 w-5" />
+                      Download Resume
+                    </>
+                  )}
                 </Button>
                 {/* Socials wired from portfolio.json */}
                 <div className="flex justify-center mt-6 gap-6 text-muted-foreground">
