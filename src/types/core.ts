@@ -80,10 +80,17 @@ export interface SkillGroup {
   skills: string[];
 }
 
+export interface Certificate {
+  title: string;
+  issuer: string;
+  url: string;
+}
+
 export interface OverviewData extends SectionMeta {
   description: string;
   stats: Stat[];
   skillGroups: SkillGroup[];
+  certificate?: Certificate;
 }
 
 // ─── About ─────────────────────────────────────────────────────────────────

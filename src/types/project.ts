@@ -7,16 +7,32 @@ import type { WithVisible } from "./core"
 
 // ─── Project Detail ────────────────────────────────────────────────────────
 
+export type SectionType = "text" | "list" | "challenges" | "metrics" | "code" | "table";
+
 export interface ChallengeEntry {
   challenge: string;
   solution: string;
 }
 
+export interface TableSection {
+  headers: string[];
+  rows: string[][];
+}
+
+export interface ProjectSection {
+  id: string;
+  title: string;
+  type: SectionType;
+  content?: string;
+  language?: string;
+  items?: string[];
+  challenges?: ChallengeEntry[];
+  metrics?: string[];
+  table?: TableSection;
+}
+
 export interface ProjectDetail {
-  overview: string;
-  stepsFollowed: string[];
-  challengesFaced: ChallengeEntry[];
-  resultsAndMetrics: string[];
+  sections: ProjectSection[];
 }
 
 // ─── Project ───────────────────────────────────────────────────────────────

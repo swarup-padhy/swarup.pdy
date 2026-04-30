@@ -58,22 +58,44 @@ export function Overview() {
               </p>
             </motion.div>
 
-            {/* ── Stats ── */}
-            <motion.div variants={fadeUp} className="grid grid-cols-2 gap-3 self-start">
-              {overview.stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="relative group p-5 rounded-2xl bg-muted/30 border border-border/40 hover:border-primary/30 hover:bg-muted/60 transition-all duration-300 overflow-hidden"
+            {/* ── Stats & Certifications ── */}
+            <motion.div variants={fadeUp} className="flex flex-col gap-3 self-start w-full">
+              <div className="grid grid-cols-2 gap-3">
+                {overview.stats.map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="relative group p-5 rounded-2xl bg-muted/30 border border-border/40 hover:border-primary/30 hover:bg-muted/60 transition-all duration-300 overflow-hidden"
+                  >
+                    <div className="absolute top-0 left-0 h-[2px] w-0 bg-primary group-hover:w-full transition-all duration-500 rounded-t-2xl" />
+                    <span className="block text-[2rem] font-heading font-black tracking-tight text-foreground leading-none">
+                      {stat.value}
+                    </span>
+                    <span className="block text-[10px] font-semibold text-muted-foreground uppercase tracking-widest mt-2 leading-relaxed">
+                      {stat.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              
+              {overview.certificate && (
+                <a 
+                  href={overview.certificate.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between p-4 rounded-xl border border-primary/20 bg-primary/5 hover:bg-primary/10 transition-colors group cursor-pointer"
                 >
-                  <div className="absolute top-0 left-0 h-[2px] w-0 bg-primary group-hover:w-full transition-all duration-500 rounded-t-2xl" />
-                  <span className="block text-[2rem] font-heading font-black tracking-tight text-foreground leading-none">
-                    {stat.value}
-                  </span>
-                  <span className="block text-[10px] font-semibold text-muted-foreground uppercase tracking-widest mt-2 leading-relaxed">
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
+                  <div className="flex items-center gap-3">
+                    <div className="size-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                      <RiCheckDoubleLine className="size-5 text-primary" />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-sm font-bold text-foreground">{overview.certificate.title}</span>
+                      <span className="text-xs text-muted-foreground">{overview.certificate.issuer}</span>
+                    </div>
+                  </div>
+                  <RiArrowRightLine className="size-4 text-primary group-hover:translate-x-1 transition-transform" />
+                </a>
+              )}
             </motion.div>
           </div>
 

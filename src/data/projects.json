@@ -9,43 +9,63 @@
       "title": "SauceDemo E2E Selenium Automation Suite",
       "category": "Automation Testing",
       "duration": "6 weeks",
-      "summary": "Designed and implemented a production-ready Selenium + Pytest automation framework for SauceDemo using Page Object Model architecture, explicit waits, Allure reporting, and GitHub Actions CI/CD.",
+      "summary": "Designed and implemented a production-ready Selenium + Pytest automation framework using Page Object Model architecture, layered fixtures, and GitHub Actions CI/CD.",
       "whatCovered": [
         "Built Selenium + Pytest framework from scratch using Page Object Model",
-        "Created a BasePage class to centralize explicit waits and eliminate flakiness",
+        "Created a layered fixture architecture to prevent stale sessions",
         "Structured six dedicated page objects for clean test-layer separation",
         "Integrated Allure reporting and GitHub Actions for automated CI execution"
       ],
       "impact": [
         "Eliminated 100% of implicit wait usage — zero flaky tests in CI pipeline",
-        "Structured coverage across login, cart, checkout, and product sorting flows",
+        "Reusable authenticated sessions drastically cut execution time",
         "Regression suite runs end-to-end automatically on every push via GitHub Actions",
         "POM architecture makes adding new tests fast with minimal boilerplate"
       ],
       "techStack": ["Python", "Selenium", "Pytest", "Allure", "GitHub Actions", "POM"],
       "githubUrl": "https://github.com/swarup-padhy/saucedemo-automation",
       "detailContent": {
-        "overview": "SauceDemo is a publicly available e-commerce demo app. I used it as a real automation target to build a production-grade framework from scratch — the same way you would inside a QA team. The goal was to demonstrate POM architecture, explicit wait strategy, CI integration, and Allure reporting as a unified, working system.",
-        "stepsFollowed": [
-          "Analyzed SauceDemo's page structure and identified six core page objects.",
-          "Built a BasePage class to centralize WebDriverWait logic and reusable element interactions.",
-          "Wrote modular Pytest test cases for login, product sorting, cart, and checkout flows.",
-          "Configured a GitHub Actions workflow to trigger the full suite on every commit push."
-        ],
-        "challengesFaced": [
+        "sections": [
           {
-            "challenge": "Timing-related flakiness on dynamic UI elements during test runs.",
-            "solution": "Centralized all waits inside BasePage using explicit WebDriverWait with expected conditions — removed all implicit waits from the entire codebase."
+            "id": "overview",
+            "title": "Project Overview",
+            "type": "text",
+            "content": "A production-grade UI test automation framework built with Selenium WebDriver, pytest, and Allure Reports. The goal was not just to test SauceDemo, but to build a framework mirroring enterprise standards that solves common scaling problems like locator duplication, flaky sessions, and slow execution."
           },
           {
-            "challenge": "Allure reports not rendering correctly in the GitHub Actions CI environment.",
-            "solution": "Configured the Allure CLI path explicitly in the workflow YAML and added artifact upload steps so reports are accessible after each run."
+            "id": "architecture",
+            "title": "Architecture Decisions (Why POM?)",
+            "type": "text",
+            "content": "I did not start with the Page Object Model. Initially, I wrote direct Selenium scripts with inline locators. This quickly became unmaintainable as test coverage increased across login, cart, and checkout flows.\n\nThe main failure points of the initial approach were locator duplication across files, a high breakage rate when the UI changed, and no clear separation between test logic and page interaction.\n\nI intentionally refactored the entire suite to POM to centralize locators and actions. This drastically reduced code duplication and improved maintainability when adding new flows."
+          },
+          {
+            "id": "folder-structure",
+            "title": "Framework Structure",
+            "type": "code",
+            "language": "bash",
+            "content": "saucedemo-automation/\n│\n├── pages/                          ← Page Object Model layer\n│   ├── login_page.py               ← Login page actions and locators\n│   ├── inventory_page.py           ← Product listing page\n│   ├── cart_page.py                ← Shopping cart page\n│   ├── checkout_page.py            ← Checkout form page\n│   ├── checkout_overview_page.py   ← Order summary page\n│   └── checkout_complete_page.py   ← Order confirmation page\n│\n├── tests/                          ← Test suites\n│   ├── test_login.py               ← Login functional + negative tests\n│   ├── test_inventory.py           ← Product and cart badge tests\n│   ├── test_cart.py                ← Cart management tests\n│   ├── test_checkout.py            ← Form validation tests\n│   └── test_complete_flow.py       ← Full e2e purchase flow\n│\n├── utils/\n│   └── test_data.py                ← Centralized test data\n│\n├── conftest.py                     ← Fixtures: driver, logged_in_driver\n├── pytest.ini                      ← pytest config + markers\n└── requirements.txt                ← Project dependencies"
+          },
+          {
+            "id": "difficulties",
+            "title": "Real Difficulties & Solutions",
+            "type": "challenges",
+            "challenges": [
+              {
+                "challenge": "Session leakage and slow execution times due to improper teardown and repeating the login step for every single test.",
+                "solution": "Implemented layered fixtures in `conftest.py` (`driver` → `logged_in_driver`). Scoped them properly and used `yield` to ensure stale sessions were destroyed. This provided a reusable authenticated session that drastically sped up execution."
+              }
+            ]
+          },
+          {
+            "id": "impressive",
+            "title": "What Makes This Stand Out",
+            "type": "list",
+            "items": [
+              "Strict separation of concerns: tests never contain locators; page objects never contain assertions.",
+              "Layered fixtures ensure tests start in the exact state they need (fresh vs authenticated) without wasting execution time.",
+              "Fully integrated CI pipeline with step-level Allure reporting."
+            ]
           }
-        ],
-        "resultsAndMetrics": [
-          "Full suite runs in under 3 minutes covering all core e-commerce user flows.",
-          "Allure reports generate with step-level traceability after every CI execution.",
-          "Zero test failures due to timing issues after the BasePage explicit wait refactor."
         ]
       }
     },
@@ -55,43 +75,98 @@
       "title": "MERN Chat Application — Full Manual QA Engagement",
       "category": "Manual Testing",
       "duration": "3 weeks",
-      "summary": "End-to-end manual QA engagement on a MERN stack chat application — designing 29 test cases, executing them systematically, and reporting 4 real defects including a JWT session persistence vulnerability and a WebSocket zombie connection bug.",
+      "summary": "End-to-end manual QA engagement on a MERN stack chat application. Built a strict Requirements Traceability Matrix and reported 4 real defects including a Critical security vulnerability.",
       "whatCovered": [
-        "Designed 29 structured test cases covering auth, messaging, and real-time chat behavior",
-        "Built a Requirements Traceability Matrix (RTM) linking every test case to a requirement",
+        "Designed 29 structured test cases covering auth, messaging, and real-time chat",
+        "Built a Requirements Traceability Matrix (RTM) linking tests to requirements",
         "Executed exploratory testing to uncover edge cases beyond written test cases",
         "Reported 4 critical and high-severity defects with full reproduction steps"
       ],
       "impact": [
         "Discovered a JWT session persistence vulnerability — session remained active post-logout",
-        "Identified a WebSocket zombie connection causing silent message delivery failures",
+        "Identified a WebSocket zombie connection causing silent resource leaks",
         "Achieved 100% requirement coverage across all tested modules via RTM",
-        "Delivered a complete artifact suite: test plan, test cases, RTM, bug reports, and summary"
+        "Delivered a complete artifact suite: test plan, test cases, RTM, and bug reports"
       ],
       "techStack": ["Manual Testing", "JIRA", "RTM", "Exploratory Testing", "WebSocket", "JWT"],
       "githubUrl": "https://github.com/swarup-padhy/chat-application-manual-qa",
       "detailContent": {
-        "overview": "A MERN stack real-time chat application used as a QA practice target. I conducted a full manual QA engagement — from test planning to defect reporting — treating it exactly as a real-world assignment with professional-grade deliverables a hiring team could evaluate directly.",
-        "stepsFollowed": [
-          "Reviewed the application's feature set and created a structured test plan.",
-          "Designed 29 test cases with preconditions, test data, execution steps, and expected results.",
-          "Built a Requirements Traceability Matrix to confirm full coverage before execution.",
-          "Executed all test cases and ran exploratory sessions to probe edge-case behavior."
-        ],
-        "challengesFaced": [
+        "sections": [
           {
-            "challenge": "WebSocket behavior is invisible through the UI alone — hard to observe or assert.",
-            "solution": "Used browser DevTools Network tab to monitor WebSocket frames directly, which revealed a zombie connection persisting after the chat session ended."
+            "id": "overview",
+            "title": "Project Overview",
+            "type": "text",
+            "content": "A structured manual testing engagement covering the core functional, security, API, and real-time requirements of a fullstack MERN chat application. I treated this as a strict enterprise QA assignment, producing a complete documentation suite and discovering 4 real, unscripted defects."
           },
           {
-            "challenge": "The JWT session bug required precise logout timing to reproduce consistently.",
-            "solution": "Documented exact reproduction steps with action sequence and timing so developers could reproduce it reliably without back-and-forth."
+            "id": "architecture",
+            "title": "Design Decisions (Why an RTM?)",
+            "type": "text",
+            "content": "I intentionally built a full Requirements Traceability Matrix (RTM) to demonstrate structured QA thinking. While arguably overkill for a simple chat app, without the RTM, there was a high risk of missing edge cases like message ordering or connection handling.\n\nThe RTM ensured that every functional requirement (send/receive messages, reconnect logic) was mapped to specific test cases, allowing me to identify gaps in coverage early and prove 100% requirement coverage."
+          },
+          {
+            "id": "folder-structure",
+            "title": "Documentation Structure",
+            "type": "code",
+            "language": "bash",
+            "content": "chat-app-manual-testing/\n├── 01-requirements/requirements.md  ← 21 functional/technical requirements\n├── 02-test-plan/test-plan.md        ← Strategy, scope, risks, entry/exit criteria\n├── 03-test-design/test-cases.md     ← 29 detailed test cases\n├── 04-defects/defect-log.md         ← 4 defects with reproduction steps & evidence\n└── 05-rtm/rtm.md                    ← REQ → TS → TC → BUG traceability matrix"
+          },
+          {
+            "id": "difficulties",
+            "title": "Real Difficulties & Defect Hunting",
+            "type": "challenges",
+            "challenges": [
+              {
+                "challenge": "Suspected a connection cleanup issue due to increasing latency after multiple login/logout cycles, but the bug was completely invisible in the UI.",
+                "solution": "Approached it from a system-behavior perspective. I opened Chrome DevTools, navigated to the Network tab, filtered for WebSocket connections, and observed multiple active connections stacking up instead of a single persistent one. Old sockets were not closing on logout (a Zombie Connection leak)."
+              },
+              {
+                "challenge": "A critical JWT session vulnerability required precise timing and steps to reproduce without developer pushback.",
+                "solution": "Documented exact exploratory steps: copying the JWT from cookies before logout, logging out, and manually re-inserting the token to successfully regain full Dashboard access, proving the server was not invalidating sessions."
+              }
+            ]
+          },
+          {
+            "id": "impressive",
+            "title": "What Makes This Stand Out",
+            "type": "list",
+            "items": [
+              "Discovered a highly technical 'Zombie WebSocket' bug by inspecting network traffic, proving debugging skills beyond surface-level UI testing.",
+              "Maintained strict end-to-end traceability (REQ → TS → TC → BUG).",
+              "Demonstrated process discipline identical to enterprise QA environments."
+            ]
+          },
+          {
+            "id": "failed-testcases",
+            "title": "Failed Test Cases to Reproduce",
+            "type": "table",
+            "table": {
+              "headers": ["Bug ID", "Issue Title", "Severity", "Reproduction Summary", "Evidence"],
+              "rows": [
+                [
+                  "BUG-001",
+                  "Case-variant emails bypass duplicate account check",
+                  "High",
+                  "1. Register with User@test.com\n2. Register again with user@test.com\n3. Both accounts are successfully created.",
+                  "/evidence/BUG-001/BUG-001-Case-Sensitive-Email.png"
+                ],
+                [
+                  "BUG-003",
+                  "Image messages fail to send in chat",
+                  "High",
+                  "1. Open chat window\n2. Attach image via UI\n3. Click Send\n4. Server returns error.",
+                  "/evidence/BUG-003/BUG-003-Message-Image-Upload-Fail.MP4"
+                ],
+                [
+                  "BUG-004",
+                  "WebSocket connection stays open after logout (Zombie Connection)",
+                  "High",
+                  "1. Login to dashboard\n2. Open DevTools > Network (WS)\n3. Click Logout\n4. Socket remains open and active.",
+                  "/evidence/BUG-004/BUG-004-Socket-Connection-After.png"
+                ]
+              ]
+            }
           }
-        ],
-        "resultsAndMetrics": [
-          "4 defects reported — 2 critical severity (security), 1 high, 1 medium — all fully reproducible.",
-          "JWT session vulnerability and WebSocket zombie connection both confirmed by developer review.",
-          "Complete professional artifact suite that mirrors real QA team output delivered."
         ]
       }
     },
@@ -101,7 +176,7 @@
       "title": "Wikipedia WCAG 2.1 Accessibility Audit",
       "category": "Accessibility Testing",
       "duration": "2 weeks",
-      "summary": "Conducted a structured manual accessibility audit of Wikipedia's core pages against WCAG 2.1 Level A and AA success criteria — evaluating keyboard navigation, color contrast, ARIA usage, and focus management.",
+      "summary": "Conducted a structured manual accessibility audit of Wikipedia's core pages against WCAG 2.1 Level AA, focusing on real user impact rather than just technical compliance.",
       "whatCovered": [
         "Audited against WCAG 2.1 Level A and AA success criteria across core page types",
         "Tested keyboard-only navigation and focus order across search, article, and edit flows",
@@ -112,51 +187,51 @@
         "Documented accessibility gaps across search, article, and edit page user flows",
         "Identified focus management issues directly affecting keyboard-only users",
         "Produced a structured audit report with WCAG criterion reference and severity per finding",
-        "Directly applicable experience for QA roles in healthcare, government, and public-sector projects"
+        "Prioritized issues based on actual user impact rather than strict rule violations"
       ],
       "techStack": ["WCAG 2.1", "Browser DevTools", "Lighthouse", "WAVE", "Manual Testing"],
       "githubUrl": "https://github.com/swarup-padhy/Wikipedia-Accessibility-Audit",
       "detailContent": {
-        "overview": "Wikipedia is one of the most visited websites in the world, making accessibility critical for millions of users — including those relying on screen readers, keyboard navigation, or assistive technology. I conducted a structured WCAG 2.1 audit across key page types, treating it as a real-world accessibility QA engagement with a formal deliverable.",
-        "stepsFollowed": [
-          "Identified key page types for audit scope: homepage, search results, article view, and edit page.",
-          "Mapped relevant WCAG 2.1 Level A and AA success criteria to each page type.",
-          "Tested using keyboard-only navigation, evaluating tab order and focus indicator visibility.",
-          "Used Lighthouse and browser DevTools to verify contrast ratios and ARIA landmark structure."
-        ],
-        "challengesFaced": [
+        "sections": [
           {
-            "challenge": "WCAG criteria can be ambiguous — pass/fail is not always immediately clear.",
-            "solution": "Cross-referenced the official WCAG Understanding documents and Deque's accessibility guidelines for each finding to ensure each verdict was objectively defensible."
+            "id": "overview",
+            "title": "Project Overview",
+            "type": "text",
+            "content": "A structured WCAG 2.1 Level AA accessibility audit of a high-traffic Wikipedia article. The audit combined automated scanning (WAVE, Lighthouse) with manual keyboard navigation and screen reader testing to evaluate real-world compliance."
+          },
+          {
+            "id": "trade-offs",
+            "title": "Design Decisions & Trade-offs",
+            "type": "text",
+            "content": "WCAG guidelines are famously strict, but real-world impact varies. A major trade-off during this audit was deciding how to classify severity.\n\nFor example, some contrast issues technically violated WCAG thresholds but remained highly readable for most users. Instead of blanket-reporting everything as a critical failure, I classified severity based strictly on user impact, not just guideline violation. This avoids over-reporting low-impact issues and keeps the engineering focus on critical accessibility barriers."
+          },
+          {
+            "id": "difficulties",
+            "title": "Severity Classification",
+            "type": "challenges",
+            "challenges": [
+              {
+                "challenge": "Determining High Severity Issues",
+                "solution": "Reserved 'High Severity' strictly for issues that outright blocked navigation or screen reader usability (e.g., empty links, missing alt text on functional images, or focus traps)."
+              },
+              {
+                "challenge": "Handling Medium/Low Severity Issues",
+                "solution": "Classified minor contrast violations or spacing issues with low usability impact as Medium or Low. For example, a search dropdown that didn't close immediately was marked Medium because it overlapped content but didn't break the core user flow."
+              }
+            ]
+          },
+          {
+            "id": "impressive",
+            "title": "What Makes This Stand Out",
+            "type": "list",
+            "items": [
+              "Pragmatic approach to accessibility: prioritizing real human impact over robotic rule enforcement.",
+              "Combined manual keyboard testing with automated tools, recognizing that tools alone cannot determine logical focus order.",
+              "Produced a clear, developer-ready issue report mapping directly to WCAG 2.1 criteria."
+            ]
           }
-        ],
-        "resultsAndMetrics": [
-          "Structured audit report produced with WCAG criterion ID, severity, and affected element per finding.",
-          "Hands-on experience applying WCAG 2.1 evaluation methodology to a real production website.",
-          "Directly applicable to QA roles in healthcare, government, and compliance-sensitive projects."
         ]
       }
-    },
-    {
-      "id": "4",
-      "slug": "doveriye-rag-system",
-      "title": "RAG System — AI Script Generation (Doveriye Internship)",
-      "category": "Internship Project",
-      "duration": "3 months",
-      "summary": "Sole technical contributor at Doveriye (Aug–Nov 2025) — built a Python-based AI Call RAG System using vector databases and a local LLM for automated script generation, while simultaneously executing manual test cases and documenting real bugs found in the system.",
-      "whatCovered": [
-        "Built an AI-powered call script generation app using Python, vector DB, and a local LLM",
-        "Designed and executed manual test cases covering the full RAG pipeline end-to-end",
-        "Documented real bugs found during internal QA with reproduction steps and severity",
-        "Managed full development and QA responsibilities as the sole technical contributor"
-      ],
-      "impact": [
-        "Delivered a functional RAG system from zero to working product within 4 months",
-        "Real production bugs identified and documented before system reached end users",
-        "Built practical Python proficiency from scratch through a live production project",
-        "Bridged developer and QA roles within a single real-world product engagement"
-      ],
-      "techStack": ["Python", "Vector Database", "Local LLM", "RAG Architecture", "Manual Testing"]
     }
   ]
 }
