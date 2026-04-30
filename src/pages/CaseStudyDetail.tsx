@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useParams, Link, Navigate } from "react-router-dom"
-import { RiArrowLeftLine, RiCheckLine, RiLightbulbFlashLine, RiFileList3Line, RiBarChartBoxLine } from "@remixicon/react"
+import { RiArrowLeftLine } from "@remixicon/react"
 import { projectsData } from "@/store"
 import type { Project } from "@/types"
 import { Button } from "@/components/ui/button"
